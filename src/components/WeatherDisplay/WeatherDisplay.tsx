@@ -108,10 +108,8 @@ const WeatherDisplay = ({ selectedCity, favoritesCB ,  }: { selectedCity: select
     };
 
     const deleteFavoriteHandler = async () => {
-        console.log("Delete Favorite");
         try {
-            const data = await deleteFavorite(Number(favoriteCity?.id));
-            console.log(data);
+            await deleteFavorite(Number(favoriteCity?.id));
             fetchFavorites();
             toast.success("Success")
         } catch (error) {
