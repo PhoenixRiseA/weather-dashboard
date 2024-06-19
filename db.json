@@ -1,0 +1,18 @@
+{
+  "favorites": [
+    {
+      "country": "IN",
+      "lat": 17.4757,
+      "lon": 78.2899,
+      "name": "Serilingampalle",
+      "id": 1
+    },
+    {
+      "country": "IN",
+      "lat": 17.3753,
+      "lon": 78.4744,
+      "name": "Hyderabad",
+      "id": 3
+    }
+  ]
+}

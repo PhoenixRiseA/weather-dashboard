@@ -1,0 +1,147 @@
+$text-color: #fff;
+$defaultpadding: 4px;
+
+* {
+    letter-spacing: 1px;
+}
+
+.weather-display {
+    position: relative;
+    width: 60%;
+    min-width: 400px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 300px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 3px;
+    text-align: center;
+    box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45), 25px 0 20px -20px rgba(0, 0, 0, 0.45), 0px 25px 20px -20px rgba(0, 0, 0, 0.45), -25px 0 20px -20px rgba(0, 0, 0, 0.45);
+    .weather-display-name {
+        margin-bottom: 15px;
+        font-size: 40px;
+        color: #444;
+        padding: $defaultpadding 0 0 $defaultpadding;
+
+        .weather-display-tooltip {
+            font-size: large;
+        }
+
+        .weather-tooltip-anchor {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 43px;
+            height: 43px;
+            border-radius: 50%;
+
+            &:hover {
+                background-color: #444;
+            }
+
+            &.active {
+                background-color: #444;
+            }
+        }
+    }
+
+    .weather-display-date {
+        font-size: x-large;
+        color: $text-color;
+        padding: $defaultpadding 0 0 $defaultpadding;
+    }
+
+    .weather-display-summary {
+        border-top: 1px solid #fff;
+        color: rgb(218, 218, 208);
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        #icon{
+            display: flex;
+        }
+    }
+
+    .weather-display-temp {
+        position: relative;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        max-width: 600px;
+        min-width: 400px;
+        color: rgb(253, 253, 247);
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        font-size: x-large;
+        flex-wrap: wrap;
+        text-align: center;
+        margin: auto;
+        
+
+        .temp {
+            position: relative;
+            font-size: 50px;
+            color: $text-color;
+            padding: 0px 10px;
+
+            span {
+                position: absolute;
+                right: 36px;
+                display: flex;
+                width: 60px;
+                white-space: normal;
+                font-size: x-small;
+                bottom: -16px;
+            }
+        }
+
+        .temp-min {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .temp-max {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .temp-c {
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            background-color: transparent;
+            color: #fff;
+            &:hover {
+                cursor: pointer;
+                background-color: #000000;
+            }
+
+            &.active {
+                background-color: #444;
+            }
+        }
+
+        .temp-f {
+            position: absolute;
+            left: 50px;
+            top: 0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            background-color: transparent;
+            color: #fff;
+            &:hover {
+                cursor: pointer;
+                background-color: #000000;
+
+            }
+
+            &.active {
+                background-color: #444;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,22 @@
+.favorites{
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    .favorites-heading {
+        color: #444
+    }
+    .favorite-item{
+        margin-top: 4px;
+        display: flex;
+        gap: 5px;
+        color: #fff;
+        cursor: pointer;
+        font-size: large;
+        &:hover{
+            color:#444;
+        }
+    }
+}
