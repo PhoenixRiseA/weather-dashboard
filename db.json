@@ -6,6 +6,27 @@
       "lon": 78.4744,
       "name": "Hyderabad",
       "id": 3
+    },
+    {
+      "country": "AE",
+      "lat": 25.2302,
+      "lon": 55.1784,
+      "name": "Ash Shindaghah",
+      "id": 4
+    },
+    {
+      "country": "US",
+      "lat": 39.0317,
+      "lon": -90.2612,
+      "name": "Jersey",
+      "id": 5
+    },
+    {
+      "country": "IN",
+      "lat": 28.6139,
+      "lon": 77.209,
+      "name": "Parliament House, Delhi",
+      "id": 6
     }
   ]
 }
