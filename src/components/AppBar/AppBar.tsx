@@ -1,10 +1,11 @@
-import { FormEvent, useCallback, useState } from 'react'
+import { FormEvent, useCallback, useMemo, useState } from 'react'
 import './AppBar.scss';
 import axios from 'axios';
 import { debounce } from '../../utils';
 import { selectedCityProps } from '../../App';
 import {  toast } from 'react-toastify';
 import Toast from '../Toast/Toast';
+import Select from 'react-select'
 const AppBar = (props: { selectCityHandler: (value: selectedCityProps) => void }) => {
     const { VITE_WEATHER_API_KEY } = import.meta.env;
     const [citySearch, setCitySearch] = useState('');
@@ -30,7 +31,12 @@ const AppBar = (props: { selectCityHandler: (value: selectedCityProps) => void }
 
     const citySearchHanlder = useCallback( (e: React.ChangeEvent<HTMLInputElement>) => {
         setCitySearch(e.target.value)
-    },[])
+    },[]);
+    const citiesOptionsMemo = useMemo(()=>cities.map(city=>{
+        return {value:city,label:`${city?.name},${city?.country}`}
+    }),[cities])
+
+      console.log(citiesOptionsMemo)
     return (
         <div style={{ cursor: loading ? "progress" : 'pointer' }}>
             <Toast/>
@@ -38,16 +44,18 @@ const AppBar = (props: { selectCityHandler: (value: selectedCityProps) => void }
                 <input className='search-input' type="search" placeholder="Search here..." onChange={debounce(citySearchHanlder,300)} required />
                 <button className='search-button' type="submit">Search</button>
             </form>
-            {cities.length > 0 && <div className='search-dropdown'>
-                <select name="cities" className='dropdown-select' onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                    const fullCity = cities.filter((item) => item?.country === e.target.value)?.[0];
-                    props.selectCityHandler(fullCity)
-                }} >
-                    {cities.map((city, index) => <option key={city?.country + `${index}`} style={{ padding: '5px' }} className='dropdown-select-option' value={city?.country}>{city?.name},{city?.country}</option>)}
-
-
-                </select>
+            { <div className='select-dropdown-container' >
+                <Select
+                    options={citiesOptionsMemo}
+                    onChange={(fullCity ) => {
+                        if(fullCity?.value) props.selectCityHandler(fullCity?.value)
+                        
+                        return
+                    }}
+                    
+                />
             </div>}
+            
         </div>
     )
 }

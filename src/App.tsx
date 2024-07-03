@@ -25,16 +25,15 @@ function App() {
 
   const favoritesCB = useCallback((value: selectedCityProps[]) => {
     setFavorites(value);
-  },[])
+  }, [])
   return (
     <>
       <Layout>
-        <
-        >
+        <>
 
           <AppBar selectCityHandler={selectCityHandler} />
-          <WeatherDisplay selectedCity={selectedCity} favoritesCB= {favoritesCB} />
-          <Favorites favorites={favorites} selectCityHandler = { selectCityHandler} />
+          <WeatherDisplay selectedCity={selectedCity} favoritesCB={favoritesCB} />
+          <Favorites favorites={favorites} selectCityHandler={selectCityHandler} />
         </>
 
       </Layout>

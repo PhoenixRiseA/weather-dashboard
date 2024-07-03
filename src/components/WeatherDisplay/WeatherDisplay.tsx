@@ -7,6 +7,7 @@ import { selectedCityProps } from '../../App';
 import Spinner from '../Spinner/Spinner';
 import { FavoriteBordered, FavoriteFilled } from '../../assets/favorite';
 import TooltipComp from '../Tooltip/Tooltip';
+import WeatherSummary from '../WeatherSummary/WeatherSummary';
 
 
 
@@ -145,6 +146,7 @@ const WeatherDisplay = ({ selectedCity, favoritesCB ,  }: { selectedCity: select
                 </div>
                 <div className='weather-display-date'>{date.toLocaleDateString()}</div>
             </>}
+            <WeatherSummary weather={weather} units={units}/>
             <Toast />
 
         </div>

@@ -1,9 +1,22 @@
 import axios from "axios";
 import { selectedCityProps } from "../App";
-const {VITE_WEATHER_API_KEY, VITE_JSON_SERVER_API, VITE_OPEN_WEATHER_API } = import.meta.env;
+const {VITE_WEATHER_API_KEY, VITE_JSON_SERVER_API, VITE_OPEN_WEATHER_API, VITE_OPENAI_API_KEY } = import.meta.env;
+const openai = axios.create({
+    baseURL: 'https://api.openai.com/v1',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${VITE_OPENAI_API_KEY}`,
+    },
+  });
 
-
-
+  export const getOpenAIResponse = async (prompt:string) => {
+    const response = await openai.post('/completions', {
+      model: 'gpt-3.5-turbo-instruct',
+      prompt: prompt,
+      max_tokens: 150,
+    });
+    return response.data;
+  };
 export const currentLocationWeather = async (position:GeolocationCoordinates,units:string) => {
     try {
         const data = await axios.get(VITE_OPEN_WEATHER_API + `lat=${position.latitude}&lon=${position.longitude}&appid=${VITE_WEATHER_API_KEY}&units=${units}`);
