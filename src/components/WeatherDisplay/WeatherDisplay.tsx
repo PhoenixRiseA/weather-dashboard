@@ -21,7 +21,7 @@ const WeatherDisplay = ({ selectedCity, favoritesCB ,  }: { selectedCity: select
     const [favorites, setFavorites] = useState<selectedCityProps[]>([]);
     const checkIfFavorite = () => {
         
-        if(weather){
+        if(weather && favorites.length > 0){
             const index = favorites.findIndex((city)=>city?.name === weather.name) ;
             setFavoriteCity(favorites[index]);
             if(index > -1){

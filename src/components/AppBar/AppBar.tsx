@@ -36,7 +36,7 @@ const AppBar = (props: { selectCityHandler: (value: selectedCityProps) => void }
         return {value:city,label:`${city?.name},${city?.country}`}
     }),[cities])
 
-      console.log(citiesOptionsMemo)
+    
     return (
         <div style={{ cursor: loading ? "progress" : 'pointer' }}>
             <Toast/>
@@ -44,7 +44,7 @@ const AppBar = (props: { selectCityHandler: (value: selectedCityProps) => void }
                 <input className='search-input' type="search" placeholder="Search here..." onChange={debounce(citySearchHanlder,300)} required />
                 <button className='search-button' type="submit">Search</button>
             </form>
-            { <div className='select-dropdown-container' >
+            {cities.length > 0 &&  <div className='select-dropdown-container' >
                 <Select
                     options={citiesOptionsMemo}
                     onChange={(fullCity ) => {
