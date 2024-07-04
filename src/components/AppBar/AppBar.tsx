@@ -15,7 +15,7 @@ const AppBar = (props: { selectCityHandler: (value: selectedCityProps) => void }
         e.preventDefault();
         try {
             setLoading(true);
-            const data = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${citySearch}&limit=5&appid=${VITE_WEATHER_API_KEY}`);
+            const data = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${citySearch}&limit=5&appid=${VITE_WEATHER_API_KEY}`);
             props.selectCityHandler(data.data[0])
             if(data.data.length === 0){
                 toast.warning("No cities matched your search");
@@ -36,7 +36,7 @@ const AppBar = (props: { selectCityHandler: (value: selectedCityProps) => void }
         return {value:city,label:`${city?.name},${city?.country}`}
     }),[cities])
 
-    
+
     return (
         <div style={{ cursor: loading ? "progress" : 'pointer' }}>
             <Toast/>

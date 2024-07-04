@@ -30,17 +30,17 @@
     },
     {
       "country": "IN",
-      "lat": 17.4757,
-      "lon": 78.2899,
-      "name": "Serilingampalle",
-      "id": 7
-    },
-    {
-      "country": "IN",
       "lat": 11.0018,
       "lon": 76.9628,
       "name": "Coimbatore",
       "id": 8
+    },
+    {
+      "country": "IN",
+      "lat": 17.4757,
+      "lon": 78.2899,
+      "name": "Serilingampalle",
+      "id": 9
     }
   ]
 }
