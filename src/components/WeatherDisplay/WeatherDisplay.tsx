@@ -122,7 +122,7 @@ const WeatherDisplay = ({ selectedCity, favoritesCB ,  }: { selectedCity: select
         <div className='weather-display'>
             {!weather ? <Spinner/> : <>
                 <div className='weather-display-name'>
-                    {weather?.name + ", " + weather.sys.country}
+                    {weather?.name + ", " + weather.sys?.country}
                     <a onClick={isFavorite ? deleteFavoriteHandler :addToFavoriteHandler} data-tooltip-id='favorite' data-tooltip-content={isFavorite ? "Remove from Favorites" :"Add To Favorites"} className='weather-tooltip-anchor' >
                        { isFavorite ? <FavoriteFilled/> : <FavoriteBordered  />}
                     </a>
