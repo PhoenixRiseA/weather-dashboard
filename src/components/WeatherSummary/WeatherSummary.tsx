@@ -3,6 +3,7 @@ import { getOpenAIResponse } from '../../RestServices/RestServices';
 import './WeatherSummary.scss'
 import ReactSelectCreatable from 'react-select/creatable';
 import Spinner from '../Spinner/Spinner';
+import { TypeAnimation } from 'react-type-animation';
 const WeatherSummary = ({ weather, units }: { weather: any, units: string }) => {
   const [input, setInput] = useState('');
   const [response, setResponse] = useState('');
@@ -10,21 +11,21 @@ const WeatherSummary = ({ weather, units }: { weather: any, units: string }) => 
   const [loading, setLoading] = useState(false);
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    
+
     try {
       setLoading(true);
       const aiResponse = await getOpenAIResponse(input);
       setResponse(aiResponse.choices[0].text);
     } catch (error) {
       setResponse("Please try again later")
-    } finally{
+    } finally {
       setLoading(false)
     }
 
   };
   useEffect(() => {
     if (weather) setInput(`You are a weather assistant, you will get a person's professsion and weather data, based on the following data you 
-          should suggest how the weather might impact the person's work and give some suggestions within 80 words or less, profession: ${prof} temp:${weather.main.temp} ${(units === 'metric' ? "C" : ' F')} humidity: ${weather.main.humidity} description: ${weather?.weather?.[0].description} place:${weather.name}`)
+          should suggest how the weather might impact the person's work and give some suggestions within 80 words or less , profession: ${prof} temp:${weather.main.temp} ${(units === 'metric' ? "C" : ' F')} humidity: ${weather.main.humidity} description: ${weather?.weather?.[0].description} place:${weather.name}`)
   }, [weather, prof])
   return (
     <div className='weather-summary-container'>
@@ -56,7 +57,11 @@ const WeatherSummary = ({ weather, units }: { weather: any, units: string }) => 
       </div>
       <div className='ai-response'>
 
-        <p>{ loading ? <Spinner/> : response}</p>
+        {loading ? <Spinner /> :
+          <TypeAnimation
+            sequence={[response]}
+            speed= {99}
+          />}
       </div>
     </div>
   )
